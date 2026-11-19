@@ -9,6 +9,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<ITodoRepository, TodoRepository>(); 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
